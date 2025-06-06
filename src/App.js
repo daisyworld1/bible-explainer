@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom/client";
 import "./index.css";
 
 const App = () => {
@@ -7,7 +6,7 @@ const App = () => {
   const [explanation, setExplanation] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const process.env.REACT_APP_OPENAI_API_KEY; 
+  const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 
   const getExplanation = async () => {
     if (!verse.trim()) return;
@@ -67,5 +66,4 @@ const App = () => {
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+export default App;
