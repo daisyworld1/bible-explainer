@@ -12,31 +12,24 @@ const App = () => {
     if (!verse.trim()) return;
     setLoading(true);
     setExplanation("Loading...");
-
-    const prompt = `Explain the meaning of the Bible verse: "${verse}".`;
-
+  
     try {
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      const response = await fetch("/api/explain", {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "gpt-4",
-          messages: [{ role: "user", content: prompt }],
-          temperature: 0.7,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ verse }),
       });
-
+  
       const data = await response.json();
-      setExplanation(data.choices[0].message.content);
+      setExplanation(data.explanation || data.error);
     } catch (error) {
       console.error(error);
-      setExplanation("Error fetching explanation. Check your API key and connection.");
+      setExplanation("Something went wrong.");
     }
+  
     setLoading(false);
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
