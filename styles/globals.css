@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@reference utilities as *;
 
 /* A typography and layout enhancements */
 body {
