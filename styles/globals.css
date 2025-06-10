@@ -1,5 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* A typography and layout enhancements */
 body {
-    margin: 0;
-    font-family: sans-serif;
-    background-color: #f2f2f2;
-  }
+  @apply bg-[#f5f5f7] text-gray-900 antialiased font-sans;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+::selection {
+  background-color: rgb(170, 174, 179);
+}
+
+/* Card-like containers */
+.card {
+  @apply bg-white rounded-3xl shadow-lg p-8;
+}
+
+/* Button style */
+.btn-primary {
+  @apply bg-black text-white py-3 px-6 rounded-xl hover:bg-neutral-800 transition-colors;
+}
+
+/* Input field */
+.input-primary {
+  @apply w-full p-4 text-base text-gray-800 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
